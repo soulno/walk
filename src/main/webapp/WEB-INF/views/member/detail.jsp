@@ -36,36 +36,40 @@ button {
 </span>
 </div>
 <hr>
-	
 	<div align="center">
 	<div class="container">
 		<br />
 		<br />
-		<div>
-			회원 등록번호: <input type="text" id="id" name="id" value="${member.id}"
-				readonly="readonly">
-		</div>
-		<div>
-			유저명 : <input type="text"
+		<table>
+		<tr>
+			<td>회원 등록번호: <input type="text" id="id" name="id" value="${member.id}"
+				readonly="readonly"></td>
+		</tr>
+		
+		<tr align="right">
+			<td>유저명 : <input type="text"
 				 id="username" name="username"
-				value="${member.username}" readonly="readonly">
-		</div>
-		<div>
-			가입일: <input type="text"
+				value="${member.username}" readonly="readonly"></td>
+				</tr>
+				
+			<tr align="right">
+			<td>가입일: <input type="text"
 				id="regdate" name="regdate"
-				value="${member.regdate}" readonly="readonly">
-		</div>
-		<div>
-			이메일: <input type="text"
+				value="${member.regdate}" readonly="readonly"></td>
+				</tr>
+				
+			<tr align="right">
+			<td>이메일: <input type="text"
 				 id="email" name="email"
-				value="${member.email}" readonly="readonly">
-		</div>
-		<div>
-			주소:<input type="text"
+				value="${member.email}" readonly="readonly"></td>
+				</tr>
+				
+			<tr align="right">
+			<td>주소:<input type="text"
 				 id="addr" name="addr"
-				value="${member.addr}" readonly="readonly">
-		</div>
-
+				value="${member.addr}" readonly="readonly"></td>
+				</tr>
+		</table>
 		<button type="button" id="btnUpdate" >수정</button>
 		<button type="button" id="btnDelete" >탈퇴</button>
 
