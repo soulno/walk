@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.project.walk.dao.CommentUserMapper">
+	<insert id="insert">
+		<![CDATA[
+  		INSERT INTO commentUserVO(username, id, content, regdate, boarduservo_id)
+  		VALUES(#{username}, seq_commentuser.nextval, #{content}, sysdate, #{boarduservo_id})
+		]]>
+  	</insert>
+  
+  	 <select id="list" resultType="CommentUserVO">
+  	 	<![CDATA[
+  		SELECT * FROM commentUserVO WHERE boarduservo_id=#{boarduservo_id}
+		]]>
+  	</select>
+  
+  	<delete id="delete">
+  		<![CDATA[
+ 		DELETE FROM commentUserVO WHERE id=#{id}
+ 		]]>
+  	</delete>
+  
+  <!-- <select id="insert" resultType="CommentUserVO">
+  select * from commentUserVO where id=#{id}
+  </select> -->
+	
+</mapper>

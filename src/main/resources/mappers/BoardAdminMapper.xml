@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.project.walk.dao.BoardAdminMapper">
+	<insert id="insert">
+		<![CDATA[
+		INSERT INTO boardadminvo (id, title, content, regdate, hitcnt, writer, bnum, membervo_id, uploadpath)
+		VALUES(seq_boardadminvo.nextval, #{title}, #{content}, sysdate, #{hitCnt}, #{writer}, #{bnum}, #{membervo_id}, #{uploadpath})
+		]]>
+	</insert>
+	
+	<select id="nextBoardNum" resultType="int">
+		<![CDATA[
+		SELECT NVL(MAX(bnum),0) + 1 AS bnum
+		FROM boardadminvo
+		]]>
+	</select>
+	
+	<!-- 관리자 게시글  -->
+	<select id="list" resultType="BoardAdminVO" >
+		<![CDATA[
+		SELECT * FROM boardadminvo ORDER BY id DESC
+		]]>
+	</select>
+	
+	<!-- 관리자 게시글 상세보기 -->
+	<select id="detail" resultType="BoardAdminVO">
+		<![CDATA[
+		SELECT * FROM boardadminvo WHERE id=#{id}
+		]]>
+	</select>
+	
+	<select id="update">
+		<![CDATA[
+		UPDATE boardadminvo 
+		SET title = #{title}, content = #{content} 
+		WHERE id = #{id}
+		]]>
+	</select>
+	
+	<delete id="delete">
+		<![CDATA[
+		DELETE 
+		FROM boardadminvo
+		WHERE bnum = #{bnum}
+		]]>
+	</delete>
+	
+	<select id="updateHitcount">
+		<![CDATA[
+		UPDATE boardadminvo
+		SET hitcnt = hitcnt+1
+		WHERE id = #{id}
+		]]>
+	</select>
+	
+</mapper>
